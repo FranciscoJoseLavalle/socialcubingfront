@@ -1,0 +1,9 @@
+.post {
+    background-color: #fff;
+    box-shadow: #999 0 0 5px;
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+}

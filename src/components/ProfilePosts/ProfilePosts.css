@@ -1,0 +1,45 @@
+.profile__posts {
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    margin: auto;
+}
+
+.profile__posts form {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: 0 1rem;
+}
+
+.profile__posts form textarea {
+    border-radius: .3rem;
+    border: none;
+    background-color: #fff;
+    color: #555;
+    font-weight: 600;
+    padding: .25rem;
+    transition: .05s;
+    box-shadow: #999 0 0 5px;
+}
+
+.profile__posts form textarea:focus {
+    outline: solid #888 2px;
+}
+
+.profile__posts form button {
+    border-radius: .3rem;
+    border: none;
+    background-color: #99a;
+    color: #fff;
+    font-weight: 600;
+    padding: .25rem;
+    align-self: flex-end;
+}
+
+.profile__posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+}

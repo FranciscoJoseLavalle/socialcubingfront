@@ -1,0 +1,11 @@
+.searchUsers {
+    padding: 1rem;
+    max-width: 80rem;
+    margin: auto;
+}
+
+.searchusers__container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

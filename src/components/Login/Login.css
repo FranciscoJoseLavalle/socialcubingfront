@@ -1,0 +1,35 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #eee;
+    gap: 1rem;
+    margin: 5rem auto;
+    width: 75%;
+    max-width: 30rem;
+    padding: 2rem;
+    box-shadow: #444 0 0 10px;
+    border-radius: .3rem;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.form input {
+    padding: .5rem;
+    color: #000;
+    border: solid #aaa .1rem;
+    border-radius: .3rem;
+    outline: none;
+}
+
+.formBtn {
+    padding: .5rem;
+    background-color: #79a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}

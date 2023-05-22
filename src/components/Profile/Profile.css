@@ -1,0 +1,30 @@
+.profile {
+    max-width: 80rem;
+    margin: auto;
+}
+.profile__user-info {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+    margin-bottom: 0;
+    gap: 1rem;
+}
+
+.profile__user-info img {
+    border-radius: 50%;
+    box-shadow: #999 0 0 5px;
+    z-index: -2;
+}
+
+.profile__sections {
+    display: flex;
+    gap: .5rem;
+    padding: 1rem;
+}
+
+.profile a {
+    color: #556;
+    font-weight: 600;
+    padding: .5rem;
+    text-decoration: none;
+}
