@@ -21,7 +21,7 @@ const Search = () => {
         <main className='searchUsers'>
             <h2>Encontrar usuarios</h2>
             <div className='searchusers__container'>
-                {users.map(userSearched => <Friend friend={userSearched} />)}
+                {users.map(userSearched => <Friend key={userSearched._id} friend={userSearched} />)}
             </div>
         </main>
     )

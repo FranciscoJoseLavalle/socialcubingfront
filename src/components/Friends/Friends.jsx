@@ -25,7 +25,7 @@ const Friends = () => {
     }
     return (
         <div>
-            {friends.map(friend => <Friend friend={friend} />)}
+            {friends.map(friend => <Friend key={friend._id} friend={friend} />)}
         </div>
     )
 }

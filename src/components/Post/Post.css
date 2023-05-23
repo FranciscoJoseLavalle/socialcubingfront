@@ -1,9 +1,51 @@
 .post {
     background-color: #fff;
-    box-shadow: #999 0 0 5px;
+    box-shadow: #ccc 0 0 5px;
     display: flex;
     flex-direction: column;
     gap: .15rem;
     padding: .5rem 1rem;
     border-radius: .3rem;
+}
+
+.post>div {
+    padding: .5rem 0;
+    border-bottom: solid #ccc .1rem;
+}
+
+.post .post__content {
+    background-color: #eee;
+    color: #444;
+    padding: .5rem;
+}
+
+.post .post__date {
+    border-bottom: none;
+}
+
+.post__interactions {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.post__interactions small {
+    align-self: flex-start;
+    padding: .25rem;
+    background-color: #999;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50%;
+    height: min-content;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+}
+
+.post__like {
+    border: none;
+    padding: .3rem;
+    border-radius: .3rem;
+    color: #fff;
+    font-weight: 600;
+    background-color: #999;
 }

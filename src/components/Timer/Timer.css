@@ -11,7 +11,8 @@
     background-color: #fff;
     padding: 1rem;
     margin-top: 1rem;
-    box-shadow: #999 0px 0px 5px;
+    box-shadow: #ccc 0px 0px 5px;
+    border-radius: .3rem;
     width: 70%;
 }
 
@@ -20,6 +21,7 @@
     font-size: 8rem;
     margin: 0;
     user-select: none;
+    color: #333;
 }
 
 .timer__buttons {
@@ -30,8 +32,10 @@
 .timer__buttons button {
     flex-grow: 1;
     border: none;
-    background-color: #555;
+    background-color: #38f;
     color: #eee;
     text-transform: uppercase;
-    padding: .5rem;
+    padding: .25rem;
+    border-radius: .3rem;
+    font-weight: 600;
 }

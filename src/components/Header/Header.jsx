@@ -61,8 +61,9 @@ const Header = () => {
 
             {user.id &&
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {user.fullName}
+                    <button className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src={user.thumbnail} width={30} height={30} />
+                        {user.name}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><p onClick={logout}>Cerrar sesión</p></li>
