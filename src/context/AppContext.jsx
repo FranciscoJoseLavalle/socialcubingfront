@@ -6,9 +6,10 @@ export const AppContext = createContext([])
 
 const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
+    const API_URL = "socialcubing-production.up.railway.app"
 
     function logout() {
-        axios.post("http://localhost:8080/api/sessions/logout")
+        axios.post("socialcubing-production.up.railway.app/api/sessions/logout")
             .then(res => {
                 if (res.data.status === "success") {
                     document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
@@ -23,7 +24,7 @@ const AppContextProvider = ({ children }) => {
             uid: user.id,
             fid
         }
-        axios.post("http://localhost:8080/api/user/friends", params)
+        axios.post("socialcubing-production.up.railway.app/api/user/friends", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {

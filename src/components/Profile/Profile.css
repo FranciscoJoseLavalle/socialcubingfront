@@ -2,12 +2,29 @@
     max-width: 80rem;
     margin: auto;
 }
+
 .profile__user-info {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     margin: 1rem;
     margin-bottom: 0;
+    gap: 1.5rem;
+}
+
+.profile__user-info>div {
+    display: flex;
+    align-items: center;
     gap: 1rem;
+}
+
+.profile__user-info button {
+    border: none;
+    padding: .25rem;
+    background-color: #38f;
+    color: #fff;
+    font-weight: 600;
+    border-radius: .3rem;
 }
 
 .profile__user-info img {

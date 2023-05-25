@@ -10,7 +10,7 @@ const Post = ({ element }) => {
     const { user } = useContext(AppContext);
 
     const likePost = () => {
-        axios.put(`http://localhost:8080/api/posts/`, { uid: user.id, pid: element._id })
+        axios.put(`socialcubing-production.up.railway.app/api/posts/`, { uid: user.id, pid: element._id })
             .then(res => {
                 console.log(res.data);
             })

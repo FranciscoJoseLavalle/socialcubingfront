@@ -55,7 +55,7 @@ const Profile = () => {
             uid: userActual._id,
             post
         }
-        axios.post("http://localhost:8080/api/user/post", params)
+        axios.post("socialcubing-production.up.railway.app/api/user/post", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {
@@ -70,7 +70,7 @@ const Profile = () => {
     }
 
     const getUser = () => {
-        axios(`http://localhost:8080/api/user/${uid}`)
+        axios(`socialcubing-production.up.railway.app/api/user/${uid}`)
             .then(res => {
                 console.log(res.data)
                 setUserActual(res.data.payload);
@@ -79,7 +79,7 @@ const Profile = () => {
     }
 
     const getPosts = () => {
-        axios(`http://localhost:8080/api/posts/${uid}`)
+        axios(`socialcubing-production.up.railway.app/api/posts/${uid}`)
             .then(res => {
                 console.log(res.data)
                 setPosts(res.data.payload)
@@ -109,7 +109,7 @@ const Profile = () => {
             uid: user.id,
             url
         }
-        axios.post("http://localhost:8080/api/user", params)
+        axios.post("socialcubing-production.up.railway.app/api/user", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {
@@ -125,10 +125,16 @@ const Profile = () => {
     return (
         <main className='profile'>
             <div className='profile__user-info'>
-                {userActual.thumbnail ? <img src={userActual.thumbnail} alt="User Image" width={100} height={100} /> : <img src={foto} alt="User Image" width={100} height={100} />}
-                <h2>{userActual.first_name} {userActual.last_name}</h2>
-                <input type="file" onChange={handleImageChange} />
-                <button onClick={changeImage}>Change Image</button>
+                <div>
+                    {userActual.thumbnail ? <img src={userActual.thumbnail} alt="User Image" width={100} height={100} /> : <img src={foto} alt="User Image" width={100} height={100} />}
+                    <h2>{userActual.first_name} {userActual.last_name}</h2>
+                </div>
+                {userActual._id === user.id
+                    && <div>
+                        <input type="file" onChange={handleImageChange} />
+                        <button onClick={changeImage}>Change Image</button>
+                    </div>
+                }
             </div>
             <div className='profile__sections'>
                 <Link to="#" onClick={(e) => setActualPage(e.target.textContent)} style={{

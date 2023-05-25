@@ -25,7 +25,7 @@ const Header = () => {
         <header className='header'>
             <nav className='header__nav header__desktop'>
                 <Link to={'/'} className="header__nav-logo">
-                    <img src={icon} alt="Cubo" width={100} height={100} />
+                    <img src={icon} alt="Cubo" width={75} height={75} />
                     <h1>Social<span>Cubing</span></h1>
                 </Link>
                 <ul>
@@ -40,11 +40,11 @@ const Header = () => {
 
             <nav className='header__nav header__mobile'>
                 <Link to={'/'} className="header__nav-logo">
-                    <img src={icon} alt="Cubo" width={100} height={100} />
+                    <img src={icon} alt="Cubo" width={75} height={75} />
                     <h1>Social<span>Cubing</span></h1>
                 </Link>
                 <button className="burger_button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src={burger} alt="Burger" width={50} height={50} />
+                    <img src={burger} alt="Burger" width={40} height={40} />
                 </button>
             </nav>
             <div className="collapse nav-mobile" id="navbarToggleExternalContent">
@@ -66,6 +66,7 @@ const Header = () => {
                         {user.name}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><Link to={`/profile/${user.id}`}>Perfil</Link></li>
                         <li><p onClick={logout}>Cerrar sesión</p></li>
                     </ul>
                 </div>

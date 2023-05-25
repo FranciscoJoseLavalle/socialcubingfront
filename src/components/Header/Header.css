@@ -22,6 +22,8 @@
 
 .header__nav-logo h1 {
     color: #333;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .header__nav ul {

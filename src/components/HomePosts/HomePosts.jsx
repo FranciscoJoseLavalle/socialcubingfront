@@ -7,7 +7,7 @@ const HomePosts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios(`http://localhost:8080/api/posts`)
+        axios(`socialcubing-production.up.railway.app/api/posts`)
             .then(res => {
                 setPosts(res.data.payload);
             })

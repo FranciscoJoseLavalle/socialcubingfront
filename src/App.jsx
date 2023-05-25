@@ -15,7 +15,7 @@ function App() {
   const { setUser } = useContext(AppContext);
   useEffect(() => {
     const token = document.cookie.replace('token=', '')
-    axios.post("http://localhost:8080/auth", { token })
+    axios.post("socialcubing-production.up.railway.app/auth", { token })
       .then(res => {
         if (res.data.status === "success") {
           console.log(res.data);

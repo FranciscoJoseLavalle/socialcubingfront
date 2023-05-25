@@ -40,6 +40,6 @@
 .profile__posts-container {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 3rem;
     padding: 1rem;
 }

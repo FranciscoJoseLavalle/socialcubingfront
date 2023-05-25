@@ -10,7 +10,7 @@ const Search = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios(`http://localhost:8080/api/user`)
+        axios(`socialcubing-production.up.railway.app/api/user`)
             .then(res => {
                 console.log(res.data);
                 setUsers(res.data.payload);
