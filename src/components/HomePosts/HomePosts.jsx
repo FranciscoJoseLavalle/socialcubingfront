@@ -10,18 +10,22 @@ const HomePosts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
+        getPosts()
+    }, [])
+
+    const getPosts = () => {
         axios(`${API_URL}/api/posts`)
             .then(res => {
                 setPosts(res.data.payload);
             })
             .catch(err => console.log(err))
-    }, [])
+    }
 
     return (
         <div className='home_posts'>
             {posts.toSorted((a, b) => parseInt(b.timestamp) - parseInt(a.timestamp)).map(post =>
                 <div key={post._id}>
-                    <Post element={post} />
+                    <Post element={post} getPosts={getPosts} />
                 </div>
             )}
         </div>

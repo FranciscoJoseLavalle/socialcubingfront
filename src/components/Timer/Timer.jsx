@@ -4,9 +4,13 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import HomePosts from '../HomePosts/HomePosts';
 import './Timer.css';
+import useTitle from '../../customHooks/useTitle'
 
 const Timer = () => {
     const { user, API_URL } = useContext(AppContext);
+
+    useTitle('Inicio')
+
     const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
     const [inter, setInter] = useState(null);
 
@@ -98,7 +102,6 @@ const Timer = () => {
     //         }
     //     }
     // })
-
     return (
         <main className='timer'>
             <div className='timerContenedor'>

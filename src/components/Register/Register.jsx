@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import useTitle from '../../customHooks/useTitle'
 
 import './Register.css'
 
 const Register = () => {
     const { API_URL } = useContext(AppContext)
+    useTitle('Registrarse')
     const [first_name, setFirst_name] = useState('');
     const [last_name, setLast_name] = useState('');
     const [email, setEmail] = useState('');

@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext';
 import './Search.css';
 import Friend from '../Friend/Friend';
+import useTitle from '../../customHooks/useTitle'
 
 const Search = () => {
     const { user, API_URL } = useContext(AppContext);
+    useTitle('Buscar amigos')
     const [users, setUsers] = useState([]);
 
     useEffect(() => {

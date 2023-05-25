@@ -6,12 +6,13 @@ import { AppContext } from '../../context/AppContext';
 import Friend from '../Friend/Friend';
 import './Post.css';
 
-const Post = ({ element }) => {
+const Post = ({ element, getPosts }) => {
     const { user, API_URL } = useContext(AppContext);
 
     const likePost = () => {
         axios.put(`${API_URL}/api/posts/`, { uid: user.id, pid: element._id })
             .then(res => {
+                getPosts();
             })
             .catch(err => console.log(err))
     }

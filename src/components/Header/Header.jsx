@@ -60,7 +60,7 @@ const Header = () => {
             </div>
 
 
-            {user.id &&
+            {user.id ?
                 <div className="dropdown">
                     <button className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src={user.thumbnail ? user.thumbnail : defaultThumbnail} width={30} height={30} />
@@ -70,6 +70,11 @@ const Header = () => {
                         <li><Link to={`/profile/${user.id}`}>Perfil</Link></li>
                         <li><p onClick={logout}>Cerrar sesión</p></li>
                     </ul>
+                </div>
+                :
+                <div className='authButtons'>
+                    <Link to={'/login'}>Iniciar sesión</Link>
+                    <Link to={'/register'}>Registrarse</Link>
                 </div>
             }
 

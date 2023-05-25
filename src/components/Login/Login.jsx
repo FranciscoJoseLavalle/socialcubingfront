@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
+import useTitle from '../../customHooks/useTitle'
 
 import './Login.css';
 
 const Login = () => {
     const { user, setUser, API_URL } = useContext(AppContext);
+    useTitle("Iniciar sesión")
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
