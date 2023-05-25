@@ -1,3 +1,3 @@
-socialcubing-production.up.railway.app
+https://socialcubing-production.up.railway.app/
 
 http://localhost:8080

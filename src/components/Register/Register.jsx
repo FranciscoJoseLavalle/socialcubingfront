@@ -18,7 +18,7 @@ const Register = () => {
             password,
             email
         }
-        axios.post("socialcubing-production.up.railway.app/api/sessions/register", params, {
+        axios.post("https://socialcubing-production.up.railway.app/api/sessions/register", params, {
             "headers": {
                 'Content-Type': 'application/json'
             }

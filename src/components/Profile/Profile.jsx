@@ -55,7 +55,7 @@ const Profile = () => {
             uid: userActual._id,
             post
         }
-        axios.post("socialcubing-production.up.railway.app/api/user/post", params)
+        axios.post("https://socialcubing-production.up.railway.app/api/user/post", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {
@@ -70,7 +70,7 @@ const Profile = () => {
     }
 
     const getUser = () => {
-        axios(`socialcubing-production.up.railway.app/api/user/${uid}`)
+        axios(`https://socialcubing-production.up.railway.app/api/user/${uid}`)
             .then(res => {
                 console.log(res.data)
                 setUserActual(res.data.payload);
@@ -79,7 +79,7 @@ const Profile = () => {
     }
 
     const getPosts = () => {
-        axios(`socialcubing-production.up.railway.app/api/posts/${uid}`)
+        axios(`https://socialcubing-production.up.railway.app/api/posts/${uid}`)
             .then(res => {
                 console.log(res.data)
                 setPosts(res.data.payload)
@@ -109,7 +109,7 @@ const Profile = () => {
             uid: user.id,
             url
         }
-        axios.post("socialcubing-production.up.railway.app/api/user", params)
+        axios.post("https://socialcubing-production.up.railway.app/api/user", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {

@@ -49,7 +49,7 @@ const Timer = () => {
     }
 
     useEffect(() => {
-        axios(`socialcubing-production.up.railway.app/api/times`)
+        axios(`https://socialcubing-production.up.railway.app/api/times`)
             .then(res => {
                 console.log(res.data)
             })
@@ -62,7 +62,7 @@ const Timer = () => {
             let params = {
                 timeGetted: { user: user.id, time, cathegory: "3x3", scramble: "U2 D2 L F R U B2 U'" }
             }
-            // axios.post("socialcubing-production.up.railway.app/api/times", params)
+            // axios.post("https://socialcubing-production.up.railway.app/api/times", params)
             //     .then(res => {
             //         console.log(res.data);
             //         if (res.data.status === "success") {

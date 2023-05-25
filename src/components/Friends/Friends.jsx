@@ -8,7 +8,7 @@ const Friends = () => {
     const [friends, setFriends] = useState([])
 
     useEffect(() => {
-        axios(`socialcubing-production.up.railway.app/api/user/friends/${uid}`)
+        axios(`https://socialcubing-production.up.railway.app/api/user/friends/${uid}`)
             .then(res => {
                 console.log(res.data)
                 setFriends(res.data.payload);

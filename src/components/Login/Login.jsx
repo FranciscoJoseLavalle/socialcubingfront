@@ -17,7 +17,7 @@ const Login = () => {
             email,
             password
         }
-        axios.post("socialcubing-production.up.railway.app/api/sessions/login", params)
+        axios.post("https://socialcubing-production.up.railway.app/api/sessions/login", params)
             .then(res => {
                 console.log(res.data);
                 if (res.data.status === "success") {
@@ -34,7 +34,7 @@ const Login = () => {
 
     // const test = () => {
     //     const token = document.cookie.replace('token=', '')
-    //     axios.post("socialcubing-production.up.railway.app/auth", { token })
+    //     axios.post("https://socialcubing-production.up.railway.app/auth", { token })
     //         .then(res => {
     //             console.log(res);
     //         })
