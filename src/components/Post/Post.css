@@ -32,13 +32,9 @@
 .post__interactions small {
     align-self: flex-start;
     padding: .25rem;
-    background-color: #999;
-    color: #fff;
+    /* background-color: #999; */
+    color: #333;
     font-weight: 600;
-    border-radius: 50%;
-    height: min-content;
-    aspect-ratio: 1 / 1;
-    text-align: center;
 }
 
 .post__like {

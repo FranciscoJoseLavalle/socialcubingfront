@@ -28,14 +28,14 @@ const Post = ({ element, getPosts }) => {
                 {element.media && <img src={element.media} width={'100%'} />}
             </div>
             <div className='post__interactions'>
-                {user.name &&
-                    <button onClick={likePost} className="post__like" style={{
-                        backgroundColor: element.interactions.find(el => el === user.id) && "#f83"
-                    }}>Me gusta</button>
-                }
-                <small style={{
+                {/* {user.name && */}
+                <button onClick={likePost} className="post__like" style={{
                     backgroundColor: element.interactions.find(el => el === user.id) && "#f83"
-                }}>{element.interactions.length}</small>
+                }} disabled={user.name ? false : true}>Me gusta <br /> {element.interactions.length}</button>
+                {/* } */}
+                {/* <small style={{
+                    backgroundColor: element.interactions.find(el => el === user.id) && "#f83"
+                }}>Me gusta: </small> */}
             </div>
 
             <div className='post__date'>
