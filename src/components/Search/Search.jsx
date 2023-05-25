@@ -6,13 +6,12 @@ import './Search.css';
 import Friend from '../Friend/Friend';
 
 const Search = () => {
-    const { user } = useContext(AppContext);
+    const { user, API_URL } = useContext(AppContext);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios(`https://socialcubing-production.up.railway.app/api/user`)
+        axios(`${API_URL}/api/user`)
             .then(res => {
-                console.log(res.data);
                 setUsers(res.data.payload);
             })
     }, [])

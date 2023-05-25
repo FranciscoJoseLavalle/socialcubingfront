@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import Post from '../Post/Post';
 import './HomePosts.css';
 
 const HomePosts = () => {
+    const { API_URL } = useContext(AppContext);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios(`https://socialcubing-production.up.railway.app/api/posts`)
+        axios(`${API_URL}/api/posts`)
             .then(res => {
                 setPosts(res.data.payload);
             })

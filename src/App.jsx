@@ -18,10 +18,8 @@ function App() {
     axios.post("https://socialcubing-production.up.railway.app/auth", { token })
       .then(res => {
         if (res.data.status === "success") {
-          console.log(res.data);
           setUser(res.data.payload);
         } else {
-          console.log(res.data);
           setUser({});
         }
       })

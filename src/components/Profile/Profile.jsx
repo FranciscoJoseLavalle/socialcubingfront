@@ -11,7 +11,7 @@ import './Profile.css';
 import ProfileSections from '../ProfileSections/ProfileSections';
 
 const Profile = () => {
-    const { user } = useContext(AppContext);
+    const { user, API_URL } = useContext(AppContext);
     let { uid } = useParams();
     const [userActual, setUserActual] = useState({});
     const [postText, setPostText] = useState('');
@@ -34,17 +34,15 @@ const Profile = () => {
             uploadBytes(imageRef, media)
                 .then(() => {
                     getDownloadURL(imageRef).then((url) => {
-                        console.log(url);
-                        endUpload(url)
+                        endUpload(url, e)
                     })
                 })
         } else {
-            endUpload(null);
+            endUpload(null, e);
         }
     }
 
-    const endUpload = (url) => {
-        console.log(url);
+    const endUpload = (url, e) => {
         let post = {
             text: postText,
             media: url,
@@ -55,33 +53,30 @@ const Profile = () => {
             uid: userActual._id,
             post
         }
-        axios.post("https://socialcubing-production.up.railway.app/api/user/post", params)
+        axios.post(`${API_URL}/api/user/post`, params)
             .then(res => {
-                console.log(res.data);
                 if (res.data.status === "success") {
-                    getUser();
+                    getPosts();
+                    e.target.reset();
                 }
             })
             .catch(res => {
-                console.log(res);
                 if (res.response.data.status === 'error') {
                 }
             })
     }
 
     const getUser = () => {
-        axios(`https://socialcubing-production.up.railway.app/api/user/${uid}`)
+        axios(`${API_URL}/api/user/${uid}`)
             .then(res => {
-                console.log(res.data)
                 setUserActual(res.data.payload);
             })
             .catch(err => console.log(err))
     }
 
     const getPosts = () => {
-        axios(`https://socialcubing-production.up.railway.app/api/posts/${uid}`)
+        axios(`${API_URL}/api/posts/${uid}`)
             .then(res => {
-                console.log(res.data)
                 setPosts(res.data.payload)
             })
             .catch(err => console.log(err))
@@ -97,27 +92,23 @@ const Profile = () => {
         uploadBytes(imageRef, image)
             .then(() => {
                 getDownloadURL(imageRef).then((url) => {
-                    console.log(url);
                     setNewImage(url)
                 })
             })
     }
 
     const setNewImage = (url) => {
-        console.log(url);
         let params = {
             uid: user.id,
             url
         }
-        axios.post("https://socialcubing-production.up.railway.app/api/user", params)
+        axios.post(`${API_URL}/api/user`, params)
             .then(res => {
-                console.log(res.data);
                 if (res.data.status === "success") {
                     getUser();
                 }
             })
             .catch(res => {
-                console.log(res);
                 if (res.response.data.status === 'error') {
                 }
             })
@@ -132,7 +123,7 @@ const Profile = () => {
                 {userActual._id === user.id
                     && <div>
                         <input type="file" onChange={handleImageChange} />
-                        <button onClick={changeImage}>Change Image</button>
+                        <button onClick={changeImage}>Cambiar imagen</button>
                     </div>
                 }
             </div>

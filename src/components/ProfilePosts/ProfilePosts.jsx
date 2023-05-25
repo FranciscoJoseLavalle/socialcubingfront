@@ -3,13 +3,12 @@ import Post from '../Post/Post';
 import './ProfilePosts.css'
 
 const ProfilePosts = ({ user, uid, uploadPost, setPostText, posts, setMedia }) => {
-    console.log(posts);
     return (
         <div className='profile__posts'>
             {
                 user.id === uid
                 && <form onSubmit={uploadPost}>
-                    <textarea placeholder="¿Qué estás pensando?" onChange={(e) => setPostText(e.target.value)}></textarea>
+                    <textarea placeholder="¿Qué estás pensando?" onChange={(e) => setPostText(e.target.value)} required />
                     <input type="file" onChange={(e) => setMedia(e.target.files[0])} />
                     <button>Publicar</button>
                 </form>

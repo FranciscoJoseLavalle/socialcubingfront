@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import icon from '../../assets/img/cube.png'
+import defaultThumbnail from '../../assets/img/user.webp'
 import burger from '../../assets/img/rubik.webp'
 import { AppContext } from '../../context/AppContext';
 import './Header.css';
@@ -62,7 +63,7 @@ const Header = () => {
             {user.id &&
                 <div className="dropdown">
                     <button className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={user.thumbnail} width={30} height={30} />
+                        <img src={user.thumbnail ? user.thumbnail : defaultThumbnail} width={30} height={30} />
                         {user.name}
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">

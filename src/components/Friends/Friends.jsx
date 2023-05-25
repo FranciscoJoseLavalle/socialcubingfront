@@ -1,16 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom'
+import { AppContext } from '../../context/AppContext';
 import Friend from '../Friend/Friend';
 
 const Friends = () => {
+    const { API_URL } = useContext(AppContext);
     let { uid } = useParams();
     const [friends, setFriends] = useState([])
 
     useEffect(() => {
-        axios(`https://socialcubing-production.up.railway.app/api/user/friends/${uid}`)
+        axios(`${API_URL}/api/user/friends/${uid}`)
             .then(res => {
-                console.log(res.data)
                 setFriends(res.data.payload);
             })
             .catch(err => console.log(err))

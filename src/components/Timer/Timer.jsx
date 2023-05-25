@@ -6,7 +6,7 @@ import HomePosts from '../HomePosts/HomePosts';
 import './Timer.css';
 
 const Timer = () => {
-    const { user } = useContext(AppContext);
+    const { user, API_URL } = useContext(AppContext);
     const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
     const [inter, setInter] = useState(null);
 
@@ -43,26 +43,23 @@ const Timer = () => {
 
     const restart = () => {
         stop()
-        console.log(time);
         time != { ms: 0, s: 0, m: 0, h: 0 } && saveTime()
         setTime({ ms: 0, s: 0, m: 0, h: 0 })
     }
 
     useEffect(() => {
-        axios(`https://socialcubing-production.up.railway.app/api/times`)
+        axios(`${API_URL}/api/times`)
             .then(res => {
-                console.log(res.data)
             })
             .catch(err => console.log(err))
     }, [])
 
     const saveTime = () => {
-        console.log(time);
         if (time != { ms: 0, s: 0, m: 0, h: 0 }) {
             let params = {
                 timeGetted: { user: user.id, time, cathegory: "3x3", scramble: "U2 D2 L F R U B2 U'" }
             }
-            // axios.post("https://socialcubing-production.up.railway.app/api/times", params)
+            // axios.post(`${API_URL}/api/times`, params)
             //     .then(res => {
             //         console.log(res.data);
             //         if (res.data.status === "success") {
@@ -79,24 +76,17 @@ const Timer = () => {
 
     // document.addEventListener('keydown', (e) => {
     //     if (e.code === 'Space') {
-    //         console.log(canStart);
-    //         console.log(isRunning);
     //         if (canStart === true && isRunning === true) {
     //             setCanStart(false);
     //             setIsRunning(false);
-    //             console.log("FRENADO");
     //         } else {
-    //             console.log("PREPARANDO");
     //             setCanStart(true);
     //         }
     //         // setIsRunning(!isRunning);
-    //         // console.log(isRunning);
     //         // if (isRunning) {
     //         //     stop();
-    //         //     console.log('frenado');
     //         // } else {
     //         //     start();
-    //         //     console.log('Corriendo');
     //         // }
     //     }
     // })
@@ -105,7 +95,6 @@ const Timer = () => {
     //     if (e.code === 'Space') {
     //         if (canStart === true) {
     //             setIsRunning(true);
-    //             console.log("CORRIENDO");
     //         }
     //     }
     // })

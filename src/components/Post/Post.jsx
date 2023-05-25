@@ -7,12 +7,11 @@ import Friend from '../Friend/Friend';
 import './Post.css';
 
 const Post = ({ element }) => {
-    const { user } = useContext(AppContext);
+    const { user, API_URL } = useContext(AppContext);
 
     const likePost = () => {
-        axios.put(`https://socialcubing-production.up.railway.app/api/posts/`, { uid: user.id, pid: element._id })
+        axios.put(`${API_URL}/api/posts/`, { uid: user.id, pid: element._id })
             .then(res => {
-                console.log(res.data);
             })
             .catch(err => console.log(err))
     }
