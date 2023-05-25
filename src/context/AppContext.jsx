@@ -6,7 +6,7 @@ export const AppContext = createContext([])
 
 const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
-    const API_URL = "https://socialcubing-production.up.railway.app"
+    const API_URL = "http://localhost:8080"
 
     function logout() {
         axios.post(`${API_URL}/api/sessions/logout`)

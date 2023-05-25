@@ -15,12 +15,11 @@ const Header = () => {
         setLinks([
             { label: "Inicio", route: "/", show: true },
             { label: "Encontrar amigos", route: "/search", show: true },
-            { label: "Iniciar sesión", route: "/login", show: !user.id ? true : false },
-            { label: "Registrarse", route: "/register", show: !user.id ? true : false },
+            // { label: "Iniciar sesión", route: "/login", show: !user.id ? true : false },
+            // { label: "Registrarse", route: "/register", show: !user.id ? true : false },
             { label: "Perfil", route: `/profile/${user.id ? user.id : ''}`, show: user.id ? true : false },
         ])
     }, [user])
-
 
     return (
         <header className='header'>
