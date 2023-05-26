@@ -7,7 +7,7 @@ const ProfilePosts = ({ user, uid, uploadPost, setPostText, posts, setMedia }) =
         <div className='profile__posts'>
             {
                 user.id === uid
-                && <form onSubmit={uploadPost}>
+                && <form onSubmit={uploadPost} className="profile__posts-addPost">
                     <textarea placeholder="¿Qué estás pensando?" onChange={(e) => setPostText(e.target.value)} required />
                     <input type="file" onChange={(e) => setMedia(e.target.files[0])} />
                     <button>Publicar</button>

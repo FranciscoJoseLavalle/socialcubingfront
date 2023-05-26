@@ -3,12 +3,14 @@ import moment from 'moment'
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext';
+import Comment from '../Comment/Comment';
 import Friend from '../Friend/Friend';
 import './Post.css';
 
 const Post = ({ element, getPosts }) => {
     const { user, API_URL } = useContext(AppContext);
 
+    const [userName, setUserName] = useState({})
     const [text, setText] = useState('');
 
     const likePost = () => {
@@ -18,6 +20,11 @@ const Post = ({ element, getPosts }) => {
             })
             .catch(err => console.log(err))
     }
+
+    useEffect(() => {
+
+    }, [])
+
 
     const addComment = (e) => {
         e.preventDefault();
@@ -29,6 +36,7 @@ const Post = ({ element, getPosts }) => {
             axios.post(`${API_URL}/api/comments`, params)
                 .then(res => {
                     console.log(res.data);
+                    getPosts()
                     if (res.data.status === "success") {
                     }
                 })
@@ -39,7 +47,6 @@ const Post = ({ element, getPosts }) => {
         }
     }
 
-    console.log(element);
     return (
         <div className='post'>
             {/* <Link to={element?.author?.first_name ? `/profile/${element?.author._id}` : '#'}>
@@ -66,16 +73,22 @@ const Post = ({ element, getPosts }) => {
                 <small>{moment(parseInt(element.timestamp)).format('DD/MM/YYYY H:mm:ss')}</small>
             </div>
             {user.name &&
-                <div>
+                <div className='post__addComment'>
                     <form onSubmit={addComment}>
-                        <input type="text" onChange={(e) => setText(e.target.value)} />
+                        <input type="text" onChange={(e) => setText(e.target.value)} placeholder="Comentar algo" required />
                         <button>Comentar</button>
                     </form>
                 </div>
             }
-            <div>
-                {element.comments.map(comment => <p>{comment.text}</p>)}
-            </div>
+            {element.comments.length !== 0
+                && <div className='post__comments'>
+                    <p>Comentarios</p>
+                    {element.comments.map(comment =>
+                        <Comment key={comment._id} comment={comment} />
+                    )}
+                </div>
+            }
+
 
         </div>
     )

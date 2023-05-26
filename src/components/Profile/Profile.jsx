@@ -9,6 +9,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import './Profile.css';
 import ProfileSections from '../ProfileSections/ProfileSections';
+import useTitle from '../../customHooks/useTitle';
 
 const Profile = () => {
     const { user, API_URL } = useContext(AppContext);
@@ -113,6 +114,7 @@ const Profile = () => {
                 }
             })
     }
+
     return (
         <main className='profile'>
             <div className='profile__user-info'>

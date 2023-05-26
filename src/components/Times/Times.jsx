@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
+import TimeNumber from '../TimeNumber/TimeNumber'
 import './Times.css'
 
 const Times = ({ uid }) => {
@@ -20,7 +21,14 @@ const Times = ({ uid }) => {
     return (
         <div className='times'>
             {times.toReversed().map(time =>
-                <div key={time._id} className="time">{`${time.time.m > 0 ? `${time.time.m >= 10 ? time.time.m : `0${time.time.m}`}:` : ''}${time.time.s >= 10 ? time.time.s : `0${time.time.s}`}:${time.time.ms >= 10 ? time.time.ms : `0${time.time.ms}`}`} {time.cathegory} <button>Publicar (Próximamente)</button></div>
+                <div key={time._id} className="time">
+                    <div>
+                        <TimeNumber time={time.time} />
+                        {time.cathegory}
+                        <button>Publicar (Próximamente)</button>
+                    </div>
+                    <small>{time.scramble}</small>
+                </div>
             )}
         </div>
     )

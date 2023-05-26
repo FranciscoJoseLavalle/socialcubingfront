@@ -5,6 +5,7 @@
     align-items: center;
     flex-direction: column;
     z-index: -1;
+    margin-top: 1rem;
 }
 
 .timerContenedor {
@@ -16,7 +17,7 @@
     max-width: 50rem;
 }
 
-.timerContenedor p {
+.timerContenedor p:last-of-type {
     font-family: 'digital';
     font-size: 8rem;
     margin: 0;
@@ -34,7 +35,6 @@
     border: none;
     background-color: #38f;
     color: #eee;
-    text-transform: uppercase;
     padding: .25rem;
     border-radius: .3rem;
     font-weight: 600;

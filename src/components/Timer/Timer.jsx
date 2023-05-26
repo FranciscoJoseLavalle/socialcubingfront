@@ -5,15 +5,24 @@ import { AppContext } from '../../context/AppContext';
 import HomePosts from '../HomePosts/HomePosts';
 import './Timer.css';
 import useTitle from '../../customHooks/useTitle'
+import TimeNumber from '../TimeNumber/TimeNumber';
+import generateScramble from 'scramble-generator';
+import { Simulate } from 'react-dom/test-utils';
 
 const Timer = () => {
     const { user, API_URL } = useContext(AppContext);
 
     useTitle('Inicio')
 
+    useEffect(() => {
+        getScramble();
+    }, [])
+
+
     const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
     const [lastTime, setLastTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
     const [inter, setInter] = useState(null);
+    const [finalScramble, setFinalScramble] = useState("");
 
     const [isRunning, setIsRunning] = useState(false);
     const [canStart, setCanStart] = useState(false)
@@ -61,12 +70,13 @@ const Timer = () => {
 
     const saveTime = () => {
         let params = {
-            timeGetted: { user: user.id, time, cathegory: "3x3", scramble: "U2 D2 L F R U B2 U'" },
+            timeGetted: { user: user.id, time, cathegory: "3x3", scramble: finalScramble },
             uid: user.id
         }
         axios.post(`${API_URL}/api/times`, params)
             .then(res => {
                 console.log(res.data);
+                getScramble()
                 if (res.data.status === "success") {
                 }
             })
@@ -77,13 +87,35 @@ const Timer = () => {
             })
     }
 
+    const getScramble = () => {
+        let scramble = generateScramble({ cubeSize: 3, formatted: false })
+        let newScramble = "";
+        scramble.forEach(el => {
+            let scr = `${el.face}${el.inverted ? "'" : ""}${el.double ? "2" : ""} `
+            newScramble += scr;
+        })
+        setFinalScramble(newScramble);
+    }
+
+    // document.addEventListener('keyup', (e) => {
+    //     if (e.code === "Space") {
+    //         start()
+    //     }
+    // })
     return (
         <main className='timer'>
-            <p>Último tiempo: {`${lastTime.m > 0 ? `${lastTime.m >= 10 ? lastTime.m : `0${lastTime.m}`}:` : ''}${lastTime.s >= 10 ? lastTime.s : `0${lastTime.s}`}:${lastTime.ms >= 10 ? lastTime.ms : `0${lastTime.ms}`}`}</p>
             <div className='timerContenedor'>
-                <p>{`${time.m > 0 ? `${time.m >= 10 ? time.m : `0${time.m}`}:` : ''}${time.s >= 10 ? time.s : `0${time.s}`}:${time.ms >= 10 ? time.ms : `0${time.ms}`}`}</p>
+                <p style={{
+                    fontSize: "1rem",
+                    fontFamily: "Arial"
+                }}>Último tiempo: </p><TimeNumber time={lastTime} />
+                <p style={{
+                    fontSize: "1rem",
+                    fontFamily: "Arial"
+                }}>{finalScramble}</p>
+                <TimeNumber time={time} />
                 <div className='timer__buttons'>
-                    <button onClick={start}>Iniciar / parar</button>
+                    <button onClick={start}>Iniciar / Parar</button>
                 </div>
             </div>
             <HomePosts />

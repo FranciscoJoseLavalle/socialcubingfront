@@ -19,10 +19,6 @@
     padding: .5rem;
 }
 
-.post .post__date {
-    border-bottom: none;
-}
-
 .post__interactions {
     display: flex;
     flex-direction: column;
@@ -44,4 +40,35 @@
     color: #fff;
     font-weight: 600;
     background-color: #999;
+}
+
+.post__addComment form {
+    display: flex;
+}
+
+.post__addComment button {
+    border: none;
+    border-radius: .3rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    padding: .25rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #38f;
+}
+
+.post__addComment input {
+    border: none;
+    border-radius: .3rem;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    padding: .25rem;
+    background-color: #eee;
+    outline: none;
+}
+
+.post__comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }

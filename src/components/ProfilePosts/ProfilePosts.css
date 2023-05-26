@@ -5,14 +5,14 @@
     margin: auto;
 }
 
-.profile__posts form {
+.profile__posts-addPost {
     display: flex;
     flex-direction: column;
     gap: .25rem;
     padding: 0 1rem;
 }
 
-.profile__posts form textarea {
+.profile__posts-addPost textarea {
     border-radius: .3rem;
     border: none;
     background-color: #fff;
@@ -23,11 +23,11 @@
     box-shadow: #ccc 0 0 5px;
 }
 
-.profile__posts form textarea:focus {
+.profile__posts-addPost textarea:focus {
     outline: solid #ccc .1rem;
 }
 
-.profile__posts form button {
+.profile__posts-addPost button {
     border-radius: .3rem;
     border: none;
     background-color: #38f;
