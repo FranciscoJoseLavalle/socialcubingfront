@@ -8,7 +8,7 @@ import { AppContext } from '../../context/AppContext';
 import './Header.css';
 
 const Header = () => {
-    const { user, logout } = useContext(AppContext);
+    const { user, setUser, API_URL } = useContext(AppContext);
     const [links, setLinks] = useState([]);
 
     useEffect(() => {
@@ -20,6 +20,17 @@ const Header = () => {
             { label: "Perfil", route: `/profile/${user.id ? user.id : ''}`, show: user.id ? true : false },
         ])
     }, [user])
+
+    function logout() {
+        axios.post(`${API_URL}/api/sessions/logout`)
+            .then(res => {
+                if (res.data.status === "success") {
+                    document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+                    setUser({});
+                }
+            })
+            .catch(console.log)
+    }
 
     return (
         <header className='header'>
