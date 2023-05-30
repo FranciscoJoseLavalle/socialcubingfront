@@ -15,6 +15,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
 
+
     const submit = (e) => {
         e.preventDefault();
         const a = validarCampo(email, document.querySelector('#email'))
@@ -23,7 +24,6 @@ const Login = () => {
             auth();
         }
     }
-
 
     const auth = () => {
         let params = {

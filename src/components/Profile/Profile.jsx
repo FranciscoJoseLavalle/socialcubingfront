@@ -118,14 +118,14 @@ const Profile = () => {
     return (
         <main className='profile'>
             <div className='profile__user-info'>
-                <div>
+                <div className='profile__user-info-thumbnail'>
                     {userActual.thumbnail ? <img src={userActual.thumbnail} alt="User Image" width={100} height={100} /> : <img src={foto} alt="User Image" width={100} height={100} />}
                     <h2>{userActual.first_name} {userActual.last_name}</h2>
                 </div>
                 {userActual._id === user.id
-                    && <div>
+                    && <div className='profile__user-info-changeImage'>
                         <input type="file" onChange={handleImageChange} />
-                        <button onClick={changeImage}>Cambiar imagen</button>
+                        <button onClick={changeImage} disabled={image ? false : true}>Cambiar imagen</button>
                     </div>
                 }
             </div>

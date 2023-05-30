@@ -12,10 +12,10 @@ import Timer from './components/Timer/Timer';
 import { AppContext } from './context/AppContext';
 
 function App() {
-  const { setUser } = useContext(AppContext);
+  const { setUser, API_URL } = useContext(AppContext);
   useEffect(() => {
     const token = document.cookie.replace('token=', '')
-    axios.post("https://socialcubing-production.up.railway.app/auth", { token })
+    axios.post(`${API_URL}/auth`, { token })
       .then(res => {
         if (res.data.status === "success") {
           setUser(res.data.payload);

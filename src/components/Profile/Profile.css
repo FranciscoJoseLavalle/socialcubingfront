@@ -12,10 +12,16 @@
     gap: 1.5rem;
 }
 
-.profile__user-info>div {
+.profile__user-info-thumbnail {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.profile__user-info-changeImage {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .profile__user-info button {

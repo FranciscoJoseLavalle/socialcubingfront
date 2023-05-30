@@ -33,6 +33,7 @@ const Post = ({ element, getPosts }) => {
                 pid: element._id,
                 comment: { text, author: user.id, timestamp: Date.now() }
             }
+            e.target.reset()
             axios.post(`${API_URL}/api/comments`, params)
                 .then(res => {
                     console.log(res.data);
