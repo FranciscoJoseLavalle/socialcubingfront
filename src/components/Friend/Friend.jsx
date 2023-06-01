@@ -6,9 +6,10 @@ import userIcon from '../../assets/img/user.webp'
 import axios from 'axios';
 
 const Friend = ({ friend }) => {
-    const { user, API_URL, friends } = useContext(AppContext);
+    const { user, API_URL, friends, getFriends } = useContext(AppContext);
 
     const addFriend = (fid) => {
+        getFriends()
         let params = {
             uid: user.id,
             fid
@@ -16,6 +17,7 @@ const Friend = ({ friend }) => {
         axios.post(`${API_URL}/api/user/friends`, params)
             .then(res => {
                 if (res.data.status === "success") {
+                    getFriends()
                 }
             })
             .catch(res => {

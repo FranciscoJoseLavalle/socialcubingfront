@@ -47,7 +47,7 @@ const Post = ({ element, getPosts }) => {
                 })
         }
     }
-
+    console.log(element.interactions);
     return (
         <div className='post'>
             {/* <Link to={element?.author?.first_name ? `/profile/${element?.author._id}` : '#'}>
@@ -60,14 +60,10 @@ const Post = ({ element, getPosts }) => {
                 {element.media && <img src={element.media} width={'100%'} />}
             </div>
             <div className='post__interactions'>
-                {/* {user.name && */}
                 <button onClick={likePost} className="post__like" style={{
                     backgroundColor: element.interactions.find(el => el === user.id) && "#f83"
                 }} disabled={user.name ? false : true}>Me gusta <br /> {element.interactions.length}</button>
-                {/* } */}
-                {/* <small style={{
-                    backgroundColor: element.interactions.find(el => el === user.id) && "#f83"
-                }}>Me gusta: </small> */}
+                {element.interactions.length > 0 && `Le gustó a ${element.interactions.map(el => " " + el?.first_name)}`}
             </div>
 
             <div className='post__date'>

@@ -23,9 +23,7 @@ const Timer = () => {
     const [lastTime, setLastTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
     const [inter, setInter] = useState(null);
     const [finalScramble, setFinalScramble] = useState("");
-
-    const [isRunning, setIsRunning] = useState(false);
-    const [canStart, setCanStart] = useState(false)
+    const [lastCubeSize, setLastCubeSize] = useState(3)
 
     let updatedMs = time.ms, updatedS = time.s, updatedM = time.m, updatedH = time.h;
 
@@ -64,19 +62,21 @@ const Timer = () => {
         setLastTime(time);
         if (user.name) {
             saveTime()
+        } else {
+            getScramble()
         }
         setTime({ ms: 0, s: 0, m: 0, h: 0 })
     }
 
     const saveTime = () => {
         let params = {
-            timeGetted: { user: user.id, time, cathegory: "3x3", scramble: finalScramble },
+            timeGetted: { user: user.id, time, cathegory: `${lastCubeSize}x${lastCubeSize}`, scramble: finalScramble },
             uid: user.id
         }
         axios.post(`${API_URL}/api/times`, params)
             .then(res => {
                 console.log(res.data);
-                getScramble()
+                getScramble(lastCubeSize)
                 if (res.data.status === "success") {
                 }
             })
@@ -87,8 +87,9 @@ const Timer = () => {
             })
     }
 
-    const getScramble = () => {
-        let scramble = generateScramble({ cubeSize: 3, formatted: false })
+    const getScramble = (size) => {
+        let scramble = generateScramble({ cubeSize: parseInt(size ? size : 3), formatted: false })
+        setLastCubeSize(size);
         let newScramble = "";
         scramble.forEach(el => {
             let scr = `${el.face}${el.inverted ? "'" : ""}${el.double ? "2" : ""} `
@@ -104,6 +105,17 @@ const Timer = () => {
     // })
     return (
         <main className='timer'>
+            <label htmlFor="cathegory">Categoría</label>
+            <select id='cathegory' onChange={(e) => {
+                getScramble(e.target.value)
+            }}>
+                <option value="3">3x3</option>
+                <option value="2">2x2</option>
+                <option value="4">4x4</option>
+                <option value="5">5x5</option>
+                <option value="6">6x6</option>
+                <option value="7">7x7</option>
+            </select>
             <div className='timerContenedor'>
                 <p style={{
                     fontSize: "1rem",
