@@ -15,6 +15,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isError, setIsError] = useState(false);
 
+    const [seePassword, setSeePassword] = useState(false)
 
     const submit = (e) => {
         e.preventDefault();
@@ -27,8 +28,8 @@ const Login = () => {
 
     const auth = () => {
         let params = {
-            email,
-            password
+            email: email.trim(),
+            password: password.trim()
         }
         axios.post(`${API_URL}/api/sessions/login`, params)
             .then(res => {
@@ -71,7 +72,11 @@ const Login = () => {
             </div>
             <div>
                 <label htmlFor="password">Contraseña:</label>
-                <input type="password" placeholder="*******" id="password" onChange={(e) => setPassword(e.target.value)} />
+                <input type={seePassword ? "text" : "password"} placeholder="*******" id="password" onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="seePasswordContainer">
+                <label htmlFor="seePassword">Ver contraseña</label>
+                <input type="checkbox" id='seePassword' onChange={() => setSeePassword(!seePassword)} />
             </div>
             <button className="btn formBtn">Iniciar sesión</button>
             <Link to="/register">¿Todavía no estás registrado? Registrate acá.</Link>

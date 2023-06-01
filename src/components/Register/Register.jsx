@@ -16,6 +16,8 @@ const Register = () => {
     const [registered, setRegistered] = useState(false);
     const [isError, setIsError] = useState(false);
 
+    const [seePassword, setSeePassword] = useState(false)
+
     const submit = (e) => {
         e.preventDefault();
         const a = validarCampo(email, document.querySelector('#email'))
@@ -30,10 +32,10 @@ const Register = () => {
 
     const auth = () => {
         let params = {
-            first_name,
-            last_name,
-            password,
-            email
+            first_name: first_name.trim(),
+            last_name: last_name.trim(),
+            password: password.trim(),
+            email: email.trim()
         }
         axios.post(`${API_URL}/api/sessions/register`, params, {
             "headers": {
@@ -88,7 +90,11 @@ const Register = () => {
             </div>
             <div>
                 <label htmlFor="password">Ingresa tu contraseña</label>
-                <input type="password" placeholder="Contraseña" id="password" onChange={(e) => setPassword(e.target.value)} />
+                <input type={seePassword ? "text" : "password"} placeholder="Contraseña" id="password" onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className='seePasswordContainer'>
+                <label htmlFor="seePassword">Ver contraseña</label>
+                <input type="checkbox" id='seePassword' onChange={() => setSeePassword(!seePassword)} />
             </div>
             <button className="btn formBtn">Registrarse</button>
             <Link to="/login">¿Ya tenés cuenta? Iniciá sesión.</Link>
