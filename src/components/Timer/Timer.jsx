@@ -2,20 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
-import HomePosts from '../HomePosts/HomePosts';
 import './Timer.css';
-import useTitle from '../../customHooks/useTitle'
 import TimeNumber from '../TimeNumber/TimeNumber';
 import generateScramble from 'scramble-generator';
-import { Simulate } from 'react-dom/test-utils';
 
 const Timer = () => {
     const { user, API_URL } = useContext(AppContext);
 
-    useTitle('Inicio')
-
     useEffect(() => {
-        getScramble();
+        getScramble(lastCubeSize);
     }, [])
 
 
@@ -63,7 +58,7 @@ const Timer = () => {
         if (user.name) {
             saveTime()
         } else {
-            getScramble()
+            getScramble(lastCubeSize)
         }
         setTime({ ms: 0, s: 0, m: 0, h: 0 })
     }
@@ -75,19 +70,17 @@ const Timer = () => {
         }
         axios.post(`${API_URL}/api/times`, params)
             .then(res => {
-                console.log(res.data);
                 getScramble(lastCubeSize)
                 if (res.data.status === "success") {
                 }
             })
             .catch(res => {
-                console.log(res);
                 if (res.response.data.status === 'error') {
                 }
             })
     }
 
-    const getScramble = (size) => {
+    const getScramble = (size = 3) => {
         let scramble = generateScramble({ cubeSize: parseInt(size ? size : 3), formatted: false })
         setLastCubeSize(size);
         let newScramble = "";
@@ -98,24 +91,21 @@ const Timer = () => {
         setFinalScramble(newScramble);
     }
 
-    // document.addEventListener('keyup', (e) => {
-    //     if (e.code === "Space") {
-    //         start()
-    //     }
-    // })
     return (
-        <main className='timer'>
-            <label htmlFor="cathegory">Categoría</label>
-            <select id='cathegory' onChange={(e) => {
-                getScramble(e.target.value)
-            }}>
-                <option value="3">3x3</option>
-                <option value="2">2x2</option>
-                <option value="4">4x4</option>
-                <option value="5">5x5</option>
-                <option value="6">6x6</option>
-                <option value="7">7x7</option>
-            </select>
+        <div className='timer'>
+            <div className='timer__cathegory'>
+                <label htmlFor="cathegory">Categoría</label>
+                <select id='cathegory' onChange={(e) => {
+                    getScramble(e.target.value)
+                }}>
+                    <option value="3">3x3</option>
+                    <option value="2">2x2</option>
+                    <option value="4">4x4</option>
+                    <option value="5">5x5</option>
+                    <option value="6">6x6</option>
+                    <option value="7">7x7</option>
+                </select>
+            </div>
             <div className='timerContenedor'>
                 <p style={{
                     fontSize: "1rem",
@@ -130,8 +120,7 @@ const Timer = () => {
                     <button onClick={start}>Iniciar / Parar</button>
                 </div>
             </div>
-            <HomePosts />
-        </main>
+        </div>
     )
 }
 

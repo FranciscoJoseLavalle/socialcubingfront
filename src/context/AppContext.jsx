@@ -7,20 +7,18 @@ export const AppContext = createContext([])
 const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [friends, setFriends] = useState([]);
-    // const API_URL = "http://localhost:8080"
-    const API_URL = "https://socialcubing-production.up.railway.app"
+    const API_URL = "http://localhost:8080"
+    // const API_URL = "https://socialcubing-production.up.railway.app"
 
     useEffect(() => {
         getFriends();
     }, [user])
 
     const getFriends = () => {
-        console.log(user);
         if (user.id) {
             axios(`${API_URL}/api/user/friends/${user.id}`)
                 .then(res => {
                     if (res.data.status === "success") {
-                        console.log(res.data);
                         setFriends(res.data.payload);
                     }
                 })

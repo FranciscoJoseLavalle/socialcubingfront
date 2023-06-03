@@ -12,24 +12,38 @@ const Times = ({ uid }) => {
     useEffect(() => {
         axios(`${API_URL}/api/times/${uid}`)
             .then(res => {
-                console.log(res.data);
                 setTimes(res.data.payload.times);
+                getAverages(res.data.payload.times);
             })
             .catch(err => console.log(err))
     }, [])
 
+    const getAverages = (data) => {
+        // console.log(data);
+        // data.forEach(el => {
+        //     if (el.cathegory === "3x3") {
+        //         console.log(el.time);
+        //     }
+        // })
+    }
+
     return (
         <div className='times'>
-            {times.toReversed().map(time =>
-                <div key={time._id} className="time">
-                    <div>
-                        <TimeNumber time={time.time} />
-                        {time.cathegory}
-                        <button>Publicar (Próximamente)</button>
+            {times.length > 0
+                ? <>{times.toReversed().map(time =>
+                    <div key={time._id} className="time">
+                        <div>
+                            <TimeNumber time={time.time} />
+                            {time.cathegory}
+                            <button>Publicar (Próximamente)</button>
+                        </div>
+                        <small>{time.scramble}</small>
                     </div>
-                    <small>{time.scramble}</small>
-                </div>
-            )}
+                )}
+                </>
+                : <p>Todavía no te tomaste el tiempo...</p>
+            }
+
         </div>
     )
 }

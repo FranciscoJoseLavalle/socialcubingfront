@@ -1,19 +1,42 @@
 .timer {
-    display: flex;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
+    max-width: 50rem;
+    padding: 1rem;
+    display: flex;
     flex-direction: column;
-    z-index: -1;
-    margin-top: 1rem;
+    gap: .5rem;
 }
+
+.timer__cathegory {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.timer__cathegory select {
+    border: none;
+    background-color: #f83;
+    color: #eee;
+    padding: .25rem;
+    border-radius: .3rem;
+    font-weight: 600;
+    outline: none;
+}
+
+.timer__cathegory select * {
+    background-color: #fff;
+    color: #333;
+    font-weight: 600;
+}
+
 
 .timerContenedor {
     background-color: #fff;
     padding: 1rem;
     box-shadow: #ccc 0px 0px 5px;
     border-radius: .3rem;
-    width: 95%;
+    width: 100%;
     max-width: 50rem;
 }
 

@@ -5,6 +5,8 @@ import { useParams, Link } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext';
 import Friend from '../Friend/Friend';
 
+import './Friends.css';
+
 const Friends = () => {
     const { API_URL } = useContext(AppContext);
     let { uid } = useParams();
@@ -26,7 +28,7 @@ const Friends = () => {
         )
     }
     return (
-        <div>
+        <div className='friends'>
             {friends.map(friend => <Friend key={friend._id} friend={friend} />)}
         </div>
     )

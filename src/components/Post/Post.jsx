@@ -36,7 +36,6 @@ const Post = ({ element, getPosts }) => {
             e.target.reset()
             axios.post(`${API_URL}/api/comments`, params)
                 .then(res => {
-                    console.log(res.data);
                     getPosts()
                     if (res.data.status === "success") {
                     }
@@ -47,7 +46,6 @@ const Post = ({ element, getPosts }) => {
                 })
         }
     }
-    console.log(element.interactions);
     return (
         <div className='post'>
             {/* <Link to={element?.author?.first_name ? `/profile/${element?.author._id}` : '#'}>

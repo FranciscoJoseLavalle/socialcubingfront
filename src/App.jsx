@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
@@ -31,7 +32,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path='/' element={<Timer />} />
+          <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/search' element={<Search />} />
