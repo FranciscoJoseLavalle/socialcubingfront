@@ -33,15 +33,6 @@
     font-weight: 600;
 }
 
-.post__like {
-    border: none;
-    padding: .3rem;
-    border-radius: .3rem;
-    color: #fff;
-    font-weight: 600;
-    background-color: #999;
-}
-
 .post__addComment form {
     display: flex;
 }

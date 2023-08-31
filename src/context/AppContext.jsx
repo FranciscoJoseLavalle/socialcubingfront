@@ -8,7 +8,8 @@ const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [friends, setFriends] = useState([]);
     // const API_URL = "http://localhost:8080"
-    const API_URL = "https://socialcubing-production.up.railway.app"
+    const API_URL = "https://socialcubing-wwsd-dev.fl0.io"
+    // const API_URL = "https://socialcubing-production.up.railway.app"
 
     useEffect(() => {
         getFriends();
